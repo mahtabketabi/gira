@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>گیرا - Gira </title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      background: #fff;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #000;
+    }
+
+    #lottie-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 600px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+     #lottie-container2 {
+         position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 500px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+     }
+
+#lottie-container.active,
+#lottie-container2.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+    .container{
+      display: flex;
+      flex-direction: row;
+       direction: rtl;
+             padding-right: 5em;
+    }
+
+    .right {
+        height: 80%;
+      display: flex;
+      flex-direction: column;
+      float:right;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+
+    }
+
+    .left{
+    position: relative;
+      width: 800px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      position: fixed;
+      top:0; left:0;
+      z-index: 0;
+    }
+
+    img{
+      width: 120px;
+      height: 120px;
+      background: url('../loading/gira1.png') no-repeat center/contain;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      z-index: 2;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s forwards;
+      animation-delay: 0.3s;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+      z-index: 2;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s forwards;
+    }
+    /* دومین عنوان با تاخیر */
+    .title:nth-of-type(2) {
+      animation-delay: 0.6s;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #333;
+
+      text-align: center;
+      z-index: 2;
+      direction: rtl;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s forwards;
+      animation-delay: 0.9s;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 14px;
+      direction: ltr;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s forwards;
+      animation-delay: 1.2s;
+        margin-top: 0;
+    }
+
+    .flip-unit {
+      text-align: center;
+      width: 80px;
+      user-select: none;
+    }
+
+    .flip-unit .label {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .flip-card {
+      width: 80px;
+      height: 100px;
+      background: #000;
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      color: #fdfdfd;
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 100px;
+      text-align: center;
+      perspective: 700px;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .flip-number {
+      display: block;
+      backface-visibility: hidden;
+      transform-origin: center center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* انیمیشن تاب خوردن عمودی از وسط */
+    .flip-card.flipping .flip-number {
+      animation: foldFlip 0.6s forwards;
+    }
+
+    @keyframes foldFlip {
+      0% {
+        transform: rotateX(0deg);
+      }
+      50% {
+        transform: rotateX(90deg);
+      }
+      51% {
+        transform: rotateX(90deg);
+      }
+      100% {
+        transform: rotateX(0deg);
+      }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="galaxy"></canvas>
+
+<div class="container">
+     <div class="right">
+
+         <img src="gira1.png" alt="gira logo">
+        <div class="title">گیرا مارکتینگ</div>
+        <div class="title">Gira Marketing</div>
+
+         <div class="countdown">
+          <div class="flip-unit" id="flip-days">
+            <div class="flip-card"><span class="flip-number">00</span></div>
+            <div class="label">روز</div>
+          </div>
+          <div class="flip-unit" id="flip-hours">
+            <div class="flip-card"><span class="flip-number">00</span></div>
+            <div class="label">ساعت</div>
+          </div>
+          <div class="flip-unit" id="flip-minutes">
+            <div class="flip-card"><span class="flip-number">00</span></div>
+            <div class="label">دقیقه</div>
+          </div>
+          <div class="flip-unit" id="flip-seconds">
+            <div class="flip-card"><span class="flip-number">00</span></div>
+            <div class="label">ثانیه</div>
+          </div>
+        </div>
+
+     </div>
+
+    <div class="left">
+         <div id="lottie-container"></div>
+        <div id="lottie-container2"></div>
+
+    </div>
+
+
+
+
+</div>
+   <div class="subtitle">در حال بازطراحی آینده‌ای دیجیتال هستیم؛ زمان زیادی تا بازگشتمان نمانده!</div>
+
+<script>
+
+
+        // پس زمینه کهکشان
+        const canvas = document.getElementById('galaxy');
+        const ctx = canvas.getContext('2d');
+        function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const stars = Array.from({length: 250}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.3,
+        s: Math.random() * 0.3 + 0.1
+    }));
+
+        function anim() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#000000";
+        stars.forEach(st => {
+        ctx.beginPath();
+        ctx.arc(st.x, st.y, st.r, 0, 2 * Math.PI);
+        ctx.fill();
+        st.y += st.s;
+        if (st.y > canvas.height) {
+        st.y = 0;
+        st.x = Math.random() * canvas.width;
+    }
+    });
+        requestAnimationFrame(anim);
+    }
+        anim();
+
+        // تاریخ شروع: امروز (مثلاً 2025-07-23)
+        const startDate = new Date("2025-07-23T00:00:00+03:30");
+        const totalDays = 35;
+
+        const previous = {
+        days: null,
+        hours: null,
+        minutes: null,
+        seconds: null,
+    };
+
+        function getIranTimeNow() {
+        const nowUTC = new Date();
+        const offsetMinutes = 210; // 3.5 ساعت
+        return new Date(nowUTC.getTime() + offsetMinutes * 60000);
+    }
+
+        function flipUnit(unitId, newVal) {
+        const flipUnitEl = document.getElementById('flip-' + unitId);
+        const flipCard = flipUnitEl.querySelector('.flip-card');
+        const flipNumber = flipCard.querySelector('.flip-number');
+
+        if (previous[unitId] === newVal) return;
+
+        flipCard.classList.add('flipping');
+
+        setTimeout(() => {
+        flipNumber.textContent = newVal;
+    }, 300);
+
+        setTimeout(() => {
+        flipCard.classList.remove('flipping');
+    }, 600);
+
+        previous[unitId] = newVal;
+    }
+
+        function updateCountdown() {
+        const nowIran = getIranTimeNow();
+        const timePassed = nowIran - startDate;
+        const msPerDay = 1000 * 60 * 60 * 24;
+        const daysPassed = Math.floor(timePassed / msPerDay);
+
+        const daysRemaining = Math.max(0, totalDays - daysPassed);
+        const endDate = new Date(startDate.getTime() + totalDays * msPerDay);
+        const distance = endDate - nowIran;
+
+        if (distance <= 0) {
+        ['days','hours','minutes','seconds'].forEach(id => {
+        flipUnit(id, '00');
+    });
+        return;
+    }
+
+        const d = daysRemaining;
+        const h = Math.floor((distance % msPerDay) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        flipUnit('days', String(d).padStart(2, '0'));
+        flipUnit('hours', String(h).padStart(2, '0'));
+        flipUnit('minutes', String(m).padStart(2, '0'));
+        flipUnit('seconds', String(s).padStart(2, '0'));
+    }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+
+
+        const animContainer1 = document.getElementById("lottie-container");
+const animContainer2 = document.getElementById("lottie-container2");
+
+const anim1 = lottie.loadAnimation({
+  container: animContainer1,
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  path: 'animation_trimmed.json'
+});
+
+const anim2 = lottie.loadAnimation({
+  container: animContainer2,
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  path: 'Team.json'
+});
+
+function fadeSwitch(fromEl, toEl, anim) {
+  fromEl.classList.remove("active");
+  setTimeout(() => {
+    toEl.classList.add("active");
+    anim.goToAndPlay(0, true);
+  }, 300); // یک ثانیه برای fade
+}
+
+function startFadeLoop() {
+  animContainer1.classList.add("active");
+  anim1.goToAndPlay(0, true);
+
+  anim1.addEventListener("complete", () => {
+    fadeSwitch(animContainer1, animContainer2, anim2);
+  });
+
+  anim2.addEventListener("complete", () => {
+    fadeSwitch(animContainer2, animContainer1, anim1);
+  });
+}
+
+startFadeLoop();
+
+
+</script>
+
+
+
+</body>
+</html>
