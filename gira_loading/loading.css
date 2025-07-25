@@ -1,258 +1,258 @@
 /* پایه‌ای‌ترین ریست و فونت */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html, body {
+    height: 100%;
+
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+/* بوم کهکشان در پس‌زمینه */
+canvas#galaxy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+.container {
+    height: 100vh; /* تمام صفحه */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.main {
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    direction: rtl;
+    /*flex: 1; !* این باعث میشه بقیه صفحه رو پر کنه و subtitle بره پایین *!*/
+}
+
+.right, .left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.right {
+    flex-direction: column;
+
+}
+
+.left {
+    position: relative;
+}
+
+#lottie-container {
+    width: 50em;
+    height: 40em;
+}
+
+#lottie-container2 {
+    width: 50em;
+    height: 30em;
+}
+
+#lottie-container,
+#lottie-container2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    max-width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+}
+
+#lottie-container.active,
+#lottie-container2.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    animation: fadeUp 0.7s 0.3s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s forwards;
+}
+
+.title:nth-of-type(2) {
+    animation-delay: 0.6s;
+}
+
+.countdown {
+    display: flex;
+    gap: 12px;
+    direction: ltr;
+    margin-top: 10px;
+    animation: fadeUp 0.7s 1.2s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.flip-unit {
+    text-align: center;
+}
+
+.flip-card {
+    width: 70px;
+    height: 90px;
+    background: #000;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 90px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}
+
+.flip-unit .label {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.subtitle {
+    height: 20%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #090909;
+    padding: 10px;
+    animation: fadeUp 0.7s 0.9s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    direction: rtl;
+}
+
+#random-slogan {
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
     html, body {
-      height: 100%;
-
-      font-family: 'Vazirmatn', sans-serif;
+        height: auto;
+        min-height: 110vh;
     }
-
-    /* بوم کهکشان در پس‌زمینه */
-    canvas#galaxy {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
 
     .container {
-          height: 100vh; /* تمام صفحه */
-  display: flex;
-  flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 1;
+        min-height: 110vh; /* یا بیشتر برای افزایش ارتفاع */
+        gap: 1em;
     }
 
     .main {
-      height: 70%;
-      display: flex;
-      flex-direction: row;
-      width:80%;
-      direction: rtl;
-          /*flex: 1; !* این باعث میشه بقیه صفحه رو پر کنه و subtitle بره پایین *!*/
-    }
+        padding-top: 2em;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        gap: 1em;
 
-    .right, .left {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-        height: 100%;
     }
 
     .right {
-      flex-direction: column;
+
+        width: 100%;
+        height: auto;
 
     }
 
     .left {
-      position: relative;
+        width: 100%;
+        padding: 0;
+        position: relative;
+        height: 40em; /* ارتفاع مناسب انیمیشن */
+        display: block;
     }
 
- #lottie-container{
-         width: 50em;
-      height:40em;
- }
+    #lottie-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: auto;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1.5s ease-in-out;
+        z-index: 1;
+    }
 
-     #lottie-container2 {
-            width: 50em;
-      height:30em;
-     }
-
-    #lottie-container,
     #lottie-container2 {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      max-width: 100%;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1.5s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 65%;
+        height: auto;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1.5s ease-in-out;
+        z-index: 1;
     }
 
-    #lottie-container.active,
+    #lottie-container.active {
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 2;
+    }
+
     #lottie-container2.active {
-      opacity: 1;
-      z-index: 1;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 4;
     }
 
-    img {
-      width: 100px;
-      height: 100px;
-      animation: fadeUp 0.7s 0.3s forwards;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .title {
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.7s forwards;
-    }
-
-    .title:nth-of-type(2) {
-      animation-delay: 0.6s;
-    }
-
-    .countdown {
-      display: flex;
-      gap: 12px;
-      direction: ltr;
-      margin-top: 10px;
-      animation: fadeUp 0.7s 1.2s forwards;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .flip-unit {
-      text-align: center;
-    }
-
-    .flip-card {
-      width: 70px;
-      height: 90px;
-      background: #000;
-      color: #fff;
-      font-size: 2rem;
-      font-weight: bold;
-      line-height: 90px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin-bottom: 5px;
-    }
-
-    .flip-unit .label {
-      font-size: 0.9rem;
-      color: #333;
+    .right {
+        padding: 20px;
     }
 
     .subtitle {
-      height: 20%;
-      text-align: center;
-      font-size: 1.5rem;
-      color: #090909;
-      padding: 10px;
-      animation: fadeUp 0.7s 0.9s forwards;
-      opacity: 0;
-      transform: translateY(20px);
-        direction: rtl;
+        position: relative;
+        z-index: 2;
+        padding: 10px;
+        font-size: 1.2rem;
     }
 
     #random-slogan {
-      font-size: 1.3rem;
-      margin-top: 10px;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-@media (max-width: 900px) {
-  html, body {
-    height: auto;
-    min-height: 110vh;
-  }
-
-  .container {
-    min-height: 110vh; /* یا بیشتر برای افزایش ارتفاع */
-    gap:1em;
-  }
-
-  .main {
-     padding-top: 2em;
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
-    gap: 1em;
-
-  }
-
-  .right {
-
-    width: 100%;
-    height: auto;
-
-  }
-
-  .left {
-     width: 100%;
-    padding: 0;
-    position: relative;
-    height: 40em; /* ارتفاع مناسب انیمیشن */
-    display: block;
-  }
-
-  #lottie-container{
-     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: auto;
-    margin: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 1.5s ease-in-out;
-    z-index: 1;
-  }
-
-  #lottie-container2 {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 65%;
-    height: auto;
-    margin: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 1.5s ease-in-out;
-    z-index: 1;
-  }
-
-  #lottie-container.active {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 2;
-  }
-
-  #lottie-container2.active {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 3;
-  }
-
-  .right {
-    padding: 20px;
-  }
-
-  .subtitle {
-    position: relative;
-    z-index: 2;
-    padding: 10px;
-    font-size: 1.2rem;
-  }
-
-    #random-slogan {
-      font-size: 1rem;
-      margin-top: 10px;
+        font-size: 1rem;
+        margin-top: 10px;
     }
 
 }

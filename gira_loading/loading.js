@@ -1,5 +1,5 @@
 
-        // پس زمینه کهکشان
+
         const canvas = document.getElementById('galaxy');
         const ctx = canvas.getContext('2d');
         function resize() {
