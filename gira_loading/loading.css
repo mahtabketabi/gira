@@ -1,290 +1,258 @@
-/* استایل‌های پایه */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* پایه‌ای‌ترین ریست و فونت */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-html, body {
-  height: 100%;
-  background: #fff;
-  font-family: 'Vazirmatn', Tahoma, sans-serif;
+    html, body {
+      height: 100%;
+
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    /* بوم کهکشان در پس‌زمینه */
+    canvas#galaxy {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+
+    .container {
+          height: 100vh; /* تمام صفحه */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden; /* فقط جلوگیری از اسکرول افقی */
-  color: #000;
-}
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
 
-/* کانتینر انیمیشن لوتی */
-#lottie-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 800px;
-  height: 700px;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  pointer-events: none;
-}
+    .main {
+      height: 70%;
+      display: flex;
+      flex-direction: row;
+      width:80%;
+      direction: rtl;
+          /*flex: 1; !* این باعث میشه بقیه صفحه رو پر کنه و subtitle بره پایین *!*/
+    }
 
-#lottie-container2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 800px;
-  height: 500px;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  pointer-events: none;
-}
+    .right, .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        height: 100%;
+    }
 
-#lottie-container.active,
-#lottie-container2.active {
-  opacity: 1;
-  z-index: 1;
-}
+    .right {
+      flex-direction: column;
 
-/* ساختار کلی */
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  direction: rtl;
-  align-items: center;
-}
+    }
 
-.main {
-  height: 80%;
-  display: flex;
-  flex-direction: row;
-  direction: rtl;
-}
+    .left {
+      position: relative;
+    }
 
-.right {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px; /* فضای داخلی برای جلوگیری از برش متن */
-  box-sizing: border-box;
-  text-align: center;
-}
+ #lottie-container{
+         width: 50em;
+      height:40em;
+ }
 
-.left {
-  position: relative;
-  width: 800px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+     #lottie-container2 {
+            width: 50em;
+      height:30em;
+     }
 
-/* پس‌زمینه کهکشان */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
+    #lottie-container,
+    #lottie-container2 {
+      position: absolute;
+      top: 0;
+      left: 0;
 
-/* لوگو */
-img {
-  width: 30%;
-  height: 20%;
-  background: url('../loading/gira1.png') no-repeat center/contain;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  z-index: 2;
+      max-width: 100%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.5s ease-in-out;
+    }
 
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s forwards;
-  animation-delay: 0.3s;
-}
+    #lottie-container.active,
+    #lottie-container2.active {
+      opacity: 1;
+      z-index: 1;
+    }
 
-/* عناوین */
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s forwards;
-}
+    img {
+      width: 100px;
+      height: 100px;
+      animation: fadeUp 0.7s 0.3s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
 
-/* تاخیر برای عنوان دوم */
-.title:nth-of-type(2) {
-  animation-delay: 0.6s;
-}
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s forwards;
+    }
 
-/* شعار رندوم */
-#random-slogan {
-  direction: rtl; /* جهت متن */
-  text-align: center; /* مرکز چین افقی */
-  display: block;
-  margin: 20px auto;
-  font-size: 1.8rem;
-  color: #0b0b0b;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s forwards;
-  animation-delay: 0.9s;
-  word-break: break-word; /* جلوگیری از برش ناگهانی متن */
-  overflow-wrap: break-word;
-}
+    .title:nth-of-type(2) {
+      animation-delay: 0.6s;
+    }
 
-/* زیرنویس */
-.subtitle {
-  font-size: 1.8rem;
-  color: #090909;
-  z-index: 2;
-  direction: rtl;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s forwards;
-  animation-delay: 0.9s;
-  text-align: center;
-  align-items: center;
-}
+    .countdown {
+      display: flex;
+      gap: 12px;
+      direction: ltr;
+      margin-top: 10px;
+      animation: fadeUp 0.7s 1.2s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
 
-/* شمارش معکوس */
-.countdown {
-  display: flex;
-  gap: 14px;
-  direction: ltr;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s forwards;
-  animation-delay: 1.2s;
-}
+    .flip-unit {
+      text-align: center;
+    }
 
-.flip-unit {
-  text-align: center;
-  width: 80px;
-  user-select: none;
-}
+    .flip-card {
+      width: 70px;
+      height: 90px;
+      background: #000;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 90px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 5px;
+    }
 
-.flip-unit .label {
-  margin-top: 8px;
-  font-size: 1rem;
-  color: #333;
-}
+    .flip-unit .label {
+      font-size: 0.9rem;
+      color: #333;
+    }
 
-.flip-card {
-  width: 80px;
-  height: 100px;
-  background: #000;
-  border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  color: #fdfdfd;
-  font-size: 3rem;
-  font-weight: bold;
-  line-height: 100px;
-  text-align: center;
-  perspective: 700px;
-  cursor: default;
-  position: relative;
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
+    .subtitle {
+      height: 20%;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #090909;
+      padding: 10px;
+      animation: fadeUp 0.7s 0.9s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+        direction: rtl;
+    }
 
-.flip-number {
-  display: block;
-  backface-visibility: hidden;
-  transform-origin: center center;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    #random-slogan {
+      font-size: 1.3rem;
+      margin-top: 10px;
+    }
 
-/* انیمیشن تاب خوردن عمودی */
-.flip-card.flipping .flip-number {
-  animation: foldFlip 0.6s forwards;
-}
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-@keyframes foldFlip {
-  0% {
-    transform: rotateX(0deg);
-  }
-  50% {
-    transform: rotateX(90deg);
-  }
-  51% {
-    transform: rotateX(90deg);
-  }
-  100% {
-    transform: rotateX(0deg);
-  }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
-/* مدیا کوئری برای صفحه‌های کوچکتر - موبایل و تبلت */
 @media (max-width: 900px) {
+  html, body {
+    height: auto;
+    min-height: 110vh;
+  }
+
+  .container {
+    min-height: 110vh; /* یا بیشتر برای افزایش ارتفاع */
+    gap:1em;
+  }
 
   .main {
-    flex-direction: column !important;
-    height: auto !important;
+     padding-top: 2em;
+    flex-direction: column;
+    flex: 1;
     width: 100%;
-    padding: 0 10px;
-  }
+    gap: 1em;
 
-  .left, .right {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-
-  #lottie-container,
-  #lottie-container2 {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    max-height: 300px !important;
-  }
-
-  img {
-    width: 50% !important;
-    height: auto !important;
-    margin: 0 auto 20px auto;
-    display: block;
   }
 
   .right {
-    padding: 0 10px;
-    box-sizing: border-box;
-    text-align: center;
+
+    width: 100%;
+    height: auto;
+
   }
+
+  .left {
+     width: 100%;
+    padding: 0;
+    position: relative;
+    height: 40em; /* ارتفاع مناسب انیمیشن */
+    display: block;
+  }
+
+  #lottie-container{
+     position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: auto;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
+  }
+
+  #lottie-container2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: auto;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
+  }
+
+  #lottie-container.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  #lottie-container2.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 3;
+  }
+
+  .right {
+    padding: 20px;
+  }
+
+  .subtitle {
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+    #random-slogan {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
 }
-
-/* مدیا کوئری برای موبایل‌های بسیار کوچک */
-@media (max-width: 600px) {
-  #random-slogan {
-    font-size: 1.1rem;
-    padding: 0 8px;
-  }
-
-  .flip-unit,
-  .flip-card {
-    width: 60px !important;
-    height: 80px !important;
-    font-size: 2rem !important;
-    line-height: 80px !important;
-  }
-}
-
