@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>سایت دیجیتال مارکتینگ</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tahoma', sans-serif;
+        }
+        body {
+            background: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #0073e6;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        header h1 {
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .hero {
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            padding: 0 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            max-width: 700px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .services {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .service {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1 1 30%;
+            min-width: 260px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .service h3 {
+            margin-bottom: 15px;
+            color: #0073e6;
+        }
+        .service p {
+            font-size: 1rem;
+            color: #666;
+        }
+        .portfolio {
+            margin-top: 60px;
+        }
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0073e6;
+        }
+        .portfolio-items {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 280px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .portfolio-item img {
+            width: 100%;
+            display: block;
+            height: 180px;
+            object-fit: cover;
+        }
+        .portfolio-item div {
+            padding: 15px;
+            text-align: center;
+        }
+        .portfolio-item h4 {
+            margin-bottom: 8px;
+            color: #0073e6;
+        }
+        footer {
+            background: #222;
+            color: #ddd;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 60px;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media(max-width: 768px){
+            .services {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .portfolio-items {
+                flex-direction: column;
+                align-items: center;
+            }
+            .portfolio-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>دیجیتال مارکتینگ حرفه‌ای</h1>
+        <nav>
+            <a href="#services">خدمات ما</a>
+            <a href="#portfolio">نمونه کارها</a>
+            <a href="#contact">تماس با ما</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>راهکارهای نوین بازاریابی دیجیتال برای رشد کسب‌وکار شما</h2>
+    </section>
+
+    <section id="services" class="container">
+        <h2 style="text-align:center; margin-bottom: 30px; color:#0073e6;">خدمات ما</h2>
+        <div class="services">
+            <div class="service">
+                <h3>سئو و بهینه‌سازی سایت</h3>
+                <p>افزایش رتبه سایت شما در نتایج جستجو و جذب ترافیک هدفمند.</p>
+            </div>
+            <div class="service">
+                <h3>مدیریت تبلیغات آنلاین</h3>
+                <p>اجرای کمپین‌های تبلیغاتی موثر در گوگل، اینستاگرام و شبکه‌های اجتماعی.</p>
+            </div>
+            <div class="service">
+                <h3>بازاریابی محتوا</h3>
+                <p>تولید محتوای ارزشمند برای جذب و حفظ مشتریان شما.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio container">
+        <h2>نمونه کارها</h2>
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1556742400-b5c6c25957e6?auto=format&fit=crop&w=800&q=80" alt="نمونه کار 1" />
+                <div>
+                    <h4>کمپین تبلیغاتی فروشگاه X</h4>
+                    <p>افزایش ۵۰٪ فروش آنلاین در ۳ ماه</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80" alt="نمونه کار 2" />
+                <div>
+                    <h4>سئو سایت شرکتی Y</h4>
+                    <p>رتبه اول گوگل در کلمات کلیدی مهم</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="نمونه کار 3" />
+                <div>
+                    <h4>بازاریابی محتوا برای برند Z</h4>
+                    <p>افزایش تعامل کاربران و جذب مخاطب</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>برای مشاوره رایگان با ما تماس بگیرید: <a href="mailto:info@digitalmarketing.com">info@digitalmarketing.com</a></p>
+        <p>© 2025 دیجیتال مارکتینگ حرفه‌ای</p>
+    </footer>
+</body>
+</html>
